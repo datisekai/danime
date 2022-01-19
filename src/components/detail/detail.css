@@ -1,0 +1,12 @@
+.detail{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+}
+
+@media (max-width:739px) {
+    .detail{
+        flex-direction: column;
+    }
+}

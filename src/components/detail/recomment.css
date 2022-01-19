@@ -1,0 +1,83 @@
+.recommend{
+    flex: 1;
+    padding: 0 16px;
+}
+
+.recommend-title{
+    color: white;
+    font-size: 30px;
+}
+
+.recommend-list{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.recommend-item{
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recommend-item img{
+    width: 50px;
+    height: 80px;
+    border-radius: 5px;
+    flex: 1;
+    object-fit: cover;
+}
+
+.recommend-item h3{
+    padding: 0 8px;
+    flex: 2;
+    line-height: 0.8;
+    font-size: 23px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recommend-item:hover{
+    cursor: pointer;
+}
+
+#scroll-recommend::-webkit-scrollbar-thumb {
+    background-color: #666;
+    border-radius: 5px;
+}
+
+#scroll-recommend::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+} 
+
+
+.dots-loading {
+    display: flex;
+    justify-content: center;
+  }
+  .dots-loading > div {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    background-color: #ccc;
+    margin: 0 1rem;
+    animation: dotLoading 1s forwards infinite linear;
+  }
+  
+  .dots-loading > div:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .dots-loading > div:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .dots-loading > div:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes dotLoading {
+    to {
+      opacity: 0;
+    }
+  }

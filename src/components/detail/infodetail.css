@@ -1,0 +1,61 @@
+.info-detail{
+    padding: 16px 16px 30px 16px;
+}
+
+.info-detail__date{
+    color: white;
+    font-size: 25px;
+}
+
+.info-detail__genres{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.genres-item{
+    padding: 4px 8px;
+    margin: 4px;
+    font-family: 'Dongle', sans-serif;
+    border-radius: 10px;
+    background-color: #1A1A1A;
+    color: #ccc;
+    transition: 0.4s;
+    font-size: 20px;
+}
+
+.genres-item:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.episodes{
+    margin-top: 8px;
+}
+
+.episodes-title{
+    color: white;
+    font-size: 25px;
+}
+
+.episodes-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.episodes-btn{
+    padding: 3px 8px;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: 'Dongle', sans-serif;
+    background-color: #1A1A1A;
+    border: none;
+    color: white;
+    margin: 4px;
+    transition: 0.4s;
+}
+
+.episodes-btn:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}

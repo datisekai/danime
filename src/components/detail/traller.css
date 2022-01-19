@@ -1,0 +1,17 @@
+.traller{
+    flex: 3;
+    padding: 0px 16px;
+}
+
+@media (max-width:739px) {
+    .traller{
+        width: 100%;
+    }
+}
+
+.banner-traller{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
