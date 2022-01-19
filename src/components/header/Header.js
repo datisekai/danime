@@ -4,7 +4,7 @@ import "../grid.css";
 
 import "./header.css";
 const Header = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const navigate = useNavigate();
 
   const handleInput = (e) => {
@@ -13,7 +13,7 @@ const Header = () => {
 
   const handleSubmit = () => {
     navigate(`/search/${value}`);
-    setValue("");
+    setValue('');
   };
   return (
     <header>
