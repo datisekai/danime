@@ -16,7 +16,7 @@ import useWidth from "../customHook/useWidth";
 
 const Recently = () => {
   const items = getLocal();
-  console.log(items);
+
   const width = useWidth();
   SwiperCore.use([Navigation, Autoplay, Pagination, EffectCoverflow]);
 

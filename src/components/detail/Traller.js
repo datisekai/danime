@@ -3,7 +3,7 @@ import Loading from "../loading/Loading";
 import "./traller.css";
 
 const Traller = ({ anime,load }) => {
-  console.log(anime);
+  
   return (
     <div className="traller">
       {load ? <Loading/> : (anime.trailer_url ? (

@@ -33,7 +33,7 @@ const Header = () => {
               value={value}
               onChange={(e) => handleInput(e)}
             />
-            <i class="fas fa-users-cog settings"></i>
+            <i className="fas fa-users-cog settings"></i>
           </form>
         </div>
       </div>
