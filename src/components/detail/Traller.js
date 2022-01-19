@@ -15,9 +15,9 @@ const Traller = ({ anime,load }) => {
             anime.titles &&
             (anime.titles.en || anime.titles.it || anime.titles.jp || "Anime")
           }
-          frameborder="0"
+          
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+         
         ></iframe>
       ) : (<img className="banner-traller" src={anime.banner_image || anime.cover_image}></img>))}
     </div>
