@@ -34,7 +34,6 @@ const Search = () => {
       title: item.titles.en,
     }));
 
-  console.log(results);
 
   return (
     <div className="grid wide">
