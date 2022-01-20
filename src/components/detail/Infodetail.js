@@ -13,7 +13,9 @@ const Infodetail = ({ anime }) => {
 
   const [documents, setDocuments] = useState([]);
 
-  const [load, setLoad] = useState(true)
+  const [load, setLoad] = useState(true);
+
+  const { episode } = useParams();
 
   let api = anime && `${WATCH_API}${id}&page=${page}`;
 
@@ -37,9 +39,11 @@ const Infodetail = ({ anime }) => {
       .then((data) => {
         setItems(data);
         setDocuments([...documents, ...data.data.documents]);
-        setLoad(false)
+        setLoad(false);
       });
   };
+
+  const setBg = (item) => (item == episode ? "active-blue" : "");
 
   return (
     <div className="info-detail">
@@ -68,7 +72,11 @@ const Infodetail = ({ anime }) => {
             {documents &&
               documents.map((item, index) => (
                 <Link to={`/anime/${anime.id}/${item.number}`} key={index}>
-                  <button className="episodes-btn">{item.number}</button>
+                  <button
+                    className={`${setBg(item.number)} episodes-btn`}
+                  >
+                    {item.number}
+                  </button>
                 </Link>
               ))}
           </div>

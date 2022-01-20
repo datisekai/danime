@@ -59,3 +59,7 @@
     cursor: pointer;
     opacity: 0.8;
 }
+
+.active-blue{
+    background-color: #0E8DF1 !important;
+}
