@@ -9,6 +9,12 @@
   border-radius: 20px;
 }
 
+@media (max-width:739px) {
+  .slide-item{
+    height: 180px;
+  }
+}
+
 .slide-name {
   position: absolute;
   bottom: 0;

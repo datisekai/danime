@@ -44,3 +44,13 @@
     width: 100%;
     font-size: 1.4rem;
   }
+
+  @media (max-width:739px) {
+    .search-item{
+      width: 170px;
+    }
+  
+    .search-item__img{
+      height: 250px;
+    }
+  }

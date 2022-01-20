@@ -7,19 +7,38 @@ import "./infodetail.css";
 const Infodetail = ({ anime }) => {
   const [items, setItems] = useState([]);
 
-  const { id, episode } = useParams();
+  const { id } = useParams();
 
-  const api = anime && `${WATCH_API}${id}`;
+  const [page, setPage] = useState(1);
+
+  const [documents, setDocuments] = useState([]);
+
+  const [load, setLoad] = useState(true)
+
+  let api = anime && `${WATCH_API}${id}&page=${page}`;
+
+  useEffect(() => {
+    scrollTop();
+  }, []);
 
   useEffect(() => {
     getAnime(api);
-    scrollTop();
-  }, [episode]);
+  }, [page]);
+
+  useEffect(() => {
+    if (items.data && items.data.current_page < items.data.last_page) {
+      setPage(items.data.current_page + 1);
+    }
+  });
 
   const getAnime = (api) => {
     fetch(api)
       .then((respon) => respon.json())
-      .then((data) => setItems(data));
+      .then((data) => {
+        setItems(data);
+        setDocuments([...documents, ...data.data.documents]);
+        setLoad(false)
+      });
   };
 
   return (
@@ -46,8 +65,8 @@ const Infodetail = ({ anime }) => {
         <div className="episodes">
           <h2 className="episodes-title">Episodes</h2>
           <div className="episodes-list">
-            {items.data.documents &&
-              items.data.documents.map((item, index) => (
+            {documents &&
+              documents.map((item, index) => (
                 <Link to={`/anime/${anime.id}/${item.number}`} key={index}>
                   <button className="episodes-btn">{item.number}</button>
                 </Link>

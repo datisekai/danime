@@ -24,6 +24,7 @@ const Detail = () => {
     scrollTop();
   }, [id]);
 
+
   useEffect(() => {
     detail.id &&
       setLocal({

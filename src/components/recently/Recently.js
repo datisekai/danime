@@ -29,7 +29,7 @@ const Recently = () => {
   } else if (width >= 400 && width < 768) {
     slide = 2.5;
   } else {
-    slide = 1.5;
+    slide = 2;
   }
 
   if (items.length > 0) {
