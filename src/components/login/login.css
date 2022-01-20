@@ -8,6 +8,7 @@
     align-items: center;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    position: relative;
 }
 
 .login-form h1{
@@ -47,4 +48,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.login-btn-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.699);
+    transition: 0.4s;
+}
+
+.login-btn-close:hover{
+    cursor: pointer;
+    color: white;
 }

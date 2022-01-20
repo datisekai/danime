@@ -33,6 +33,7 @@ const Header = () => {
       if (willDelete) {
         signOut(authentication).then(() => {
           swal("SignOut successfull", "See you later", "success");
+          setUser(undefined)
         }).catch((error) => {
           swal("Oops!", "Something went wrong!", "error");
         });
