@@ -7,3 +7,11 @@ body::-webkit-scrollbar {
   background-color: #ccc;
   border-radius: 5px;
 }
+
+.swal-title{
+  font-family: sans-serif;
+}
+
+.swal-text{
+  font-family: sans-serif;
+}

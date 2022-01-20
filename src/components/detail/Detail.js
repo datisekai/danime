@@ -9,6 +9,7 @@ import Traller from "./Traller";
 import Recomment from "./Recomment";
 import Infodetail from "./Infodetail";
 import Episode from "./Episode";
+import Title from "../../handle/Title";
 
 const Detail = () => {
   const [detail, setDetail] = useState({});
@@ -46,6 +47,7 @@ const Detail = () => {
 
   return (
     <div className="grid wide">
+      <Title Title={detail.titles && (detail.titles.en || detail.titles.it || detail.titles.jp) || 'Detail Anime'}/>
       <div className="view">
         <div className="detail">
           {episode ? <Episode /> : <Traller anime={detail} load={loading} />}

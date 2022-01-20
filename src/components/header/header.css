@@ -7,6 +7,7 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 0px 16px;
+    position: relative;
 }
 
 .header-img{
@@ -48,4 +49,54 @@ form{
 
 .settings:hover{
     cursor: pointer;
+}
+
+.avatar-login{
+    width: 45px ;
+    border-radius: 50%;
+    height: 45px    ;
+    margin-left: 4px;
+    position: relative;
+}
+
+
+
+.avatar-login:hover{
+    cursor: pointer;
+}
+
+
+.avatar:hover .menu-user{
+    display: block !important;
+}
+
+.menu-user{
+    position: absolute;
+    background-color: #2A2A2A;
+    right: 0;
+    top: 0;
+    margin-top: 60px;
+    padding: 8px 16px;
+    list-style: none;
+    z-index: 2;
+    display: none;
+    border-radius: 5px;
+    transition: 0.4s;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.menu-user__item{
+    color: white;
+    font-size: 20px;
+    border-top: 1px solid #ccc;
+    margin-top: 4px;
+}
+
+.menu-user__item:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.menu-user__item:first-child{
+    border: none;
 }

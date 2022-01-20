@@ -9,15 +9,30 @@ import { Route, Routes } from "react-router-dom";
 import Search from "./components/search/Search";
 import Detail from "./components/detail/Detail";
 import Recently from "./components/recently/Recently";
+import Login from "./components/login/Login";
+import { authentication } from "./components/login/Firebase";
+import { useLoginStore } from "./components/global/User";
+import { onAuthStateChanged } from "firebase/auth";
 
 const App = () => {
   const [anime, setAnime] = useState([]);
   const [page, setPage] = useState(1);
-
+  const user = useLoginStore(state => state.user)
+  const setUser = useLoginStore(state => state.setUser)
   const api = `${MAIN_API}${page}`;
   useEffect(() => {
     AOS.init();
   })
+
+  useEffect(() => {
+    onAuthStateChanged(authentication, (user) => {
+      if (user) {
+        setUser(user)
+      } else {
+       setUser(undefined)
+      }
+    });
+  },[])
 
   useEffect(() => {
     getAnime(api);
@@ -42,6 +57,7 @@ const App = () => {
           <Route path="/search/:query" element={<Search/>}></Route>
           <Route path="/anime/:id/" element={<Detail/>}></Route>
           <Route path="/anime/:id/:episode" element={<Detail/>}></Route>
+          <Route path="/login" element={<Login/>}></Route>
         </Routes>
     
       </div>

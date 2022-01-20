@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./anime.css";
 import "../grid.css";
 import { Link } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Title from "../../handle/Title";
+
 
 const Animes = ({ anime, upPage}) => {
   const items = anime.map((item) => ({
@@ -15,6 +17,7 @@ const Animes = ({ anime, upPage}) => {
 
   return (
     <div className="grid wide">
+      <Title title='Anime'/>
       <div className="anime">
         <h1 className="anime-title">Anime</h1>
         

@@ -21,9 +21,11 @@ const Episode = () => {
       });
   };
 
+  console.log(items);
+
   return (
     <div className="episode">
-      <video src={items.video} controls></video>
+      <video src={items.video} controls title={items.title || 'Anime'}></video>
     </div>
   );
 };
