@@ -22,8 +22,6 @@ const NewsFeed = () => {
       });
   };
 
-  console.log(news);
-
   return (
     <div className="news">
         <InfiniteScroll
@@ -47,7 +45,7 @@ const NewsFeed = () => {
         <Title Title="News Feed" />
         {news &&
           news.map((item) => (
-            <div className="news-item">
+            <div className="news-item" key={item.id}>
               <div className="news-item__info">
                 <img src={item.cover_image}></img>
                 <div className="news-item__info-author">

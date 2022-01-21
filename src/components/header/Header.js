@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginStore } from "../global/User";
 import { signOut } from "firebase/auth";
@@ -12,7 +12,7 @@ const Header = () => {
 
   const user = useLoginStore((state) => state.user);
   const setUser = useLoginStore((state) => state.setUser);
- 
+ const newfeeds = useRef()
   const handleSignOut = () => {
     swal({
       title: "Are you sure?",
@@ -50,7 +50,7 @@ const Header = () => {
             {user ? (
               <div className="avatar">
                 <img className="avatar-login" src={user.photoURL}></img>
-                <ul className="menu-user">
+                <ul className="menu-user" ref={newfeeds}>
                   <li className="menu-user__item first-list">{user && user.email}</li>
                   <Link to="/newsfeed">
                     <li className="menu-user__item">News Feed</li>
