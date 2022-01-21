@@ -34,6 +34,8 @@
 
 .news-item__info-author {
   margin-left: 8px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .news-item__info-author h2 {
