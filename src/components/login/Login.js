@@ -1,5 +1,9 @@
-import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import React from "react";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Title from "../../handle/Title";
 import { useLoginStore } from "../global/User";
@@ -10,7 +14,7 @@ import "./login.css";
 const Login = () => {
   const navigate = useNavigate();
   const setUser = useLoginStore((state) => state.setUser);
-  console.log(setUser);
+
   const handleSignInGoogle = () => {
     signInWithPopup(authentication, providerGoogle)
       .then((result) => {
@@ -20,6 +24,7 @@ const Login = () => {
         // The signed-in user info.
         const user = result.user;
         setUser(user);
+
         swal("Login successfull", `Hello ${user.displayName}`, "success");
         navigate("/");
         // ...
@@ -42,6 +47,7 @@ const Login = () => {
         // The signed-in user info.
         const user = result.user;
         setUser(user);
+
         swal("Login successfull", `Hello ${user.displayName}`, "success");
         navigate("/");
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
@@ -68,11 +74,15 @@ const Login = () => {
       <Title Title="Login - Danime" />
       <div className="login-form">
         <h1>Login</h1>
-        <button id="loginFacebook" onClick={handleSignInFacebook}>Login with Facebook</button>
+        <button id="loginFacebook" onClick={handleSignInFacebook}>
+          Login with Facebook
+        </button>
         <button id="loginGoogle" onClick={handleSignInGoogle}>
           Login with Google
         </button>
-        <Link to='/'><i class="login-btn-close far fa-window-close"></i></Link>
+        <Link to="/">
+          <i className="login-btn-close far fa-window-close"></i>
+        </Link>
       </div>
     </div>
   );

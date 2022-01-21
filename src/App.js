@@ -13,6 +13,9 @@ import Login from "./components/login/Login";
 import { authentication } from "./components/login/Firebase";
 import { useLoginStore } from "./components/global/User";
 import { onAuthStateChanged } from "firebase/auth";
+import NewsFeed from "./components/newsfeed/NewsFeed";
+import PageSearch from "./components/search/pageSearch";
+import { scrollTop } from "./handle/ScrollTop";
 
 const App = () => {
   const [anime, setAnime] = useState([]);
@@ -23,6 +26,10 @@ const App = () => {
   useEffect(() => {
     AOS.init();
   })
+
+ useEffect(() => {
+   scrollTop()
+ },[])
 
   useEffect(() => {
     onAuthStateChanged(authentication, (user) => {
@@ -55,9 +62,11 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<><Slider anime={anime}/><Recently/><Animes anime={anime} upPage={upPage}/></>}></Route>
           <Route path="/search/:query" element={<Search/>}></Route>
+          <Route path="/search/" element={<PageSearch/>}></Route>
           <Route path="/anime/:id/" element={<Detail/>}></Route>
           <Route path="/anime/:id/:episode" element={<Detail/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
+          <Route path="/newsfeed" element={<NewsFeed/>}></Route>
         </Routes>
     
       </div>
