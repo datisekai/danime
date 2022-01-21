@@ -2,6 +2,7 @@
   position: relative;
   min-height: 100vh;
   padding-bottom: 20px;
+  overflow-x: hidden;
 }
 
 .news-list {
@@ -67,6 +68,10 @@
   .news-traller{
       width: 250px !important;
   }
+
+  .news-list{
+      width: 100% !important;
+  }
 }
 
 .news-item__info-author p {
@@ -77,7 +82,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   padding: 4px 0px;
-  max-width: 90%;
+  max-width: 80%;
 }
 
 .news-item__video {
