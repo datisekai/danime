@@ -7,10 +7,13 @@ import swal from "sweetalert";
 import "../grid.css";
 
 import "./header.css";
+import { useSideBar } from "../global/Bar";
 const Header = () => {
   const user = useLoginStore((state) => state.user);
   const setUser = useLoginStore((state) => state.setUser);
   const navigate = useNavigate();
+  const sidebar = useSideBar(state => state.sidebar)
+  const setSideBar = useSideBar(state => state.setSidebar)
 
   const menuFeed = useRef();
   const handleSignOut = () => {
@@ -46,9 +49,8 @@ const Header = () => {
           </Link>
 
           <div className="tool-header">
-            <Link to="/search">
-              <i className="search-icon fas fa-search"></i>
-            </Link>
+            <i className="search-icon fas fa-bars" onClick={() => setSideBar(sidebar)}></i>
+
             {user ? (
               <div className="avatar">
                 <img className="avatar-login" src={user.photoURL}></img>
@@ -57,7 +59,7 @@ const Header = () => {
                     {user && user.email}
                   </li>
 
-                  <Link to='/newsfeed'>
+                  <Link to="/newsfeed">
                     <li className="menu-user__item">News Feed</li>
                   </Link>
 

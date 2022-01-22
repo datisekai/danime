@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLoginStore } from "../global/User";
+import { useSideBar } from "../global/Bar";
 import "./sidebar.css";
 const Sidebar = () => {
   const navigate = useNavigate();
+  const statusSideBar = useSideBar(state => state.sidebar)
+  const setSideBar = useSideBar(state => state.setSidebar)
   const sidebar = useRef();
   const home = useRef();
   const search = useRef();
@@ -55,7 +57,7 @@ const Sidebar = () => {
   }, [window.location.pathname]);
 
   return (
-    <div className="sidebars" ref={sidebar}>
+    <div className="sidebars" ref={sidebar} style={{visibility:`${statusSideBar ? 'visible' : 'hidden'}`}}>
       <i
         className="fas fa-home"
         title="home"
@@ -89,7 +91,7 @@ const Sidebar = () => {
       <i
         className="fas fa-window-close"
         onClick={() => {
-          sidebar.current.style.display = "none";
+          setSideBar(true)
         }}
       ></i>
     </div>

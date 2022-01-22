@@ -18,6 +18,7 @@ import PageSearch from "./components/search/pageSearch";
 import { scrollTop } from "./handle/ScrollTop";
 import Error from "./components/error/Error";
 import Sidebar from "./components/sidebars/Sidebar";
+import Top from "./components/onTop/Top";
 
 const App = () => {
   const [anime, setAnime] = useState([]);
@@ -25,6 +26,7 @@ const App = () => {
   const user = useLoginStore(state => state.user)
   const setUser = useLoginStore(state => state.setUser)
   const api = `${MAIN_API}${page}`;
+  const [scrollY, setScrollY] = useState(false)
   const navigate = useNavigate()
   useEffect(() => {
     AOS.init();
@@ -33,6 +35,7 @@ const App = () => {
  useEffect(() => {
    scrollTop()
  },[])
+
 
   useEffect(() => {
     onAuthStateChanged(authentication, (user) => {
@@ -62,15 +65,16 @@ const App = () => {
     <div className="App" id="scroll-main">
       <Header />
       <Sidebar/>
+      
       <div className="container">
         <Routes>
-          <Route exact path="/" element={<><Slider anime={anime}/><Recently/><Animes anime={anime} upPage={upPage}/></>}></Route>
+          <Route exact path="/" element={<><Slider anime={anime}/><Recently/> <Top/><Animes anime={anime} upPage={upPage}/></>}></Route>
           <Route path="/search/:query" element={<Search/>}></Route>
           <Route path="/search/" element={<PageSearch/>}></Route>
           <Route path="/anime/:id/" element={<Detail/>}></Route>
           <Route path="/anime/:id/:episode" element={<Detail/>}></Route>
           <Route path="/login" element={!user ? <Login/> : <Error/>}></Route>
-          <Route path="/newsfeed" element={<NewsFeed/>}></Route>
+          <Route path="/newsfeed" element={<><NewsFeed/> <Top/></>}></Route>
           <Route path="*" element={<Error/>}></Route>
         </Routes>
     
