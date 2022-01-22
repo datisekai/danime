@@ -47,7 +47,7 @@ const NewsFeed = () => {
           
         >
       <div className="news-list">
-        <Title Title="News Feed" />
+        <Title Title="News Feed - Danime" />
         {news &&
           news.map((item) => (
             <div className="news-item" key={item.id}>

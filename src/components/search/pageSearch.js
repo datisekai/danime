@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import Title from "../../handle/Title";
 const PageSearch = () => {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ const PageSearch = () => {
 
   return (
     <div className="search-form">
+      <Title Title='Search - Danime'/>
       <div className="search-box">
           <h1>Search Anime</h1>
         <form onSubmit={() => handleSubmit()}>
