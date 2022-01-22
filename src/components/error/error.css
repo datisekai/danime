@@ -46,3 +46,9 @@
     cursor: pointer;
     opacity: 0.9;
 }
+
+@media (max-width:739px) {
+  .error-content{
+    width: 90%;
+  }
+}
