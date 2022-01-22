@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
+import { scrollTop } from "../../handle/ScrollTop";
 import Title from "../../handle/Title";
 
 import "./newsfeed.css";
@@ -9,6 +10,10 @@ const NewsFeed = () => {
   const [news, setNews] = useState([]);
   const api = `https://api.aniapi.com/v1/random/anime/2/true`;
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    scrollTop()
+  },[])
 
   useEffect(() => {
     getAnime(api);

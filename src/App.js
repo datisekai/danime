@@ -5,7 +5,7 @@ import Slider from "./components/slide/slide";
 import Animes from "./components/animes/Animes";
 import AOS from 'aos'
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Search from "./components/search/Search";
 import Detail from "./components/detail/Detail";
 import Recently from "./components/recently/Recently";
@@ -16,6 +16,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import NewsFeed from "./components/newsfeed/NewsFeed";
 import PageSearch from "./components/search/pageSearch";
 import { scrollTop } from "./handle/ScrollTop";
+import Error from "./components/error/Error";
+import Sidebar from "./components/sidebars/Sidebar";
 
 const App = () => {
   const [anime, setAnime] = useState([]);
@@ -23,6 +25,7 @@ const App = () => {
   const user = useLoginStore(state => state.user)
   const setUser = useLoginStore(state => state.setUser)
   const api = `${MAIN_API}${page}`;
+  const navigate = useNavigate()
   useEffect(() => {
     AOS.init();
   })
@@ -58,6 +61,7 @@ const App = () => {
   return (
     <div className="App" id="scroll-main">
       <Header />
+      <Sidebar/>
       <div className="container">
         <Routes>
           <Route exact path="/" element={<><Slider anime={anime}/><Recently/><Animes anime={anime} upPage={upPage}/></>}></Route>
@@ -67,6 +71,7 @@ const App = () => {
           <Route path="/anime/:id/:episode" element={<Detail/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/newsfeed" element={<NewsFeed/>}></Route>
+          <Route path="*" element={<Error/>}></Route>
         </Routes>
     
       </div>

@@ -1,0 +1,48 @@
+.error {
+  text-align: center;
+}
+.error-content {
+  background-color: #1a1a1a;
+    width: 50%;
+    margin: 40px auto;
+    padding: 16px 32px;
+    border-radius: 10px;
+}
+
+.error-content h3 {
+  color: white;
+  font-size: 30px;
+}
+
+.text-gradient {
+  font-weight: bold;
+  font-size: 4rem;
+  display: inline-block;
+  color: #bd93f9;
+}
+@supports (-webkit-background-clip: text) {
+  .text-gradient {
+    color: transparent;
+    background-image: linear-gradient(40deg, #ff6ec4, #7873f5);
+    -webkit-background-clip: text;
+  }
+}
+
+.tiktok {
+    margin-top: 20px;
+  padding: 10px 50px;
+  border-radius: 8px;
+  color: white;
+  background-color: #000;
+  font-size: 25px;
+  cursor: pointer;
+  font-family: "Dongle", sans-serif;
+  outline: none;
+  border: none;
+  box-shadow: 3px 3px 0 0 #fb014e, calc(-1 * 3px) calc(-1 * 3px) 0 0 #69f0f7;
+}
+
+.tiktok:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}

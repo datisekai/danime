@@ -1,0 +1,25 @@
+.sidebars{
+    position: fixed;
+    top: 25%;
+    left: 0;
+    background-color: #fff;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: #ccc 4px 4px 8px 0;
+}
+.sidebars i,.sidebars a i{
+    font-size: 25px;
+    padding: 4px;
+    margin-top: 4px;
+    color: black;
+}
+.sidebars i:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+

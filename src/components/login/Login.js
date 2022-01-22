@@ -1,5 +1,6 @@
 import {
   FacebookAuthProvider,
+  GithubAuthProvider,
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
@@ -7,7 +8,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Title from "../../handle/Title";
 import { useLoginStore } from "../global/User";
-import { authentication, providerFacebook, providerGoogle } from "./Firebase";
+import {
+  authentication,
+  providerFacebook,
+  providerGithub,
+  providerGoogle,
+} from "./Firebase";
 import swal from "sweetalert";
 
 import "./login.css";
@@ -64,7 +70,6 @@ const Login = () => {
         const email = error.email;
         // The AuthCredential type that was used.
         const credential = FacebookAuthProvider.credentialFromError(error);
-
         // ...
       });
   };
@@ -80,6 +85,7 @@ const Login = () => {
         <button id="loginGoogle" onClick={handleSignInGoogle}>
           Login with Google
         </button>
+      
         <Link to="/">
           <i className="login-btn-close far fa-window-close"></i>
         </Link>

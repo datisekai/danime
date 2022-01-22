@@ -10,6 +10,7 @@ import Recomment from "./Recomment";
 import Infodetail from "./Infodetail";
 import Episode from "./Episode";
 import Title from "../../handle/Title";
+import Comments from "./Comments";
 
 const Detail = () => {
   const [detail, setDetail] = useState({});
@@ -55,6 +56,7 @@ const Detail = () => {
         </div>
 
         <Infodetail anime={detail} />
+    
       </div>
     </div>
   );

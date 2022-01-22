@@ -38,7 +38,7 @@ const Infodetail = ({ anime }) => {
       .then((respon) => respon.json())
       .then((data) => {
         setItems(data);
-        setDocuments([...documents, ...data.data.documents]);
+        data.status_code === 200 && setDocuments([...documents, ...data.data.documents]);
         setLoad(false);
       });
   };

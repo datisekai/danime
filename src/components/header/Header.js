@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginStore } from "../global/User";
 import { signOut } from "firebase/auth";
@@ -8,11 +8,11 @@ import "../grid.css";
 
 import "./header.css";
 const Header = () => {
- 
-
   const user = useLoginStore((state) => state.user);
   const setUser = useLoginStore((state) => state.setUser);
- const newfeeds = useRef()
+  const navigate = useNavigate();
+
+  const menuFeed = useRef();
   const handleSignOut = () => {
     swal({
       title: "Are you sure?",
@@ -46,15 +46,21 @@ const Header = () => {
           </Link>
 
           <div className="tool-header">
-          <Link to='/search'><i className="search-icon fas fa-search"></i></Link>
+            <Link to="/search">
+              <i className="search-icon fas fa-search"></i>
+            </Link>
             {user ? (
               <div className="avatar">
                 <img className="avatar-login" src={user.photoURL}></img>
-                <ul className="menu-user" ref={newfeeds}>
-                  <li className="menu-user__item first-list">{user && user.email}</li>
-                  <Link to="/newsfeed">
+                <ul className="menu-user" ref={menuFeed}>
+                  <li className="menu-user__item first-list">
+                    {user && user.email}
+                  </li>
+
+                  <Link to='/newsfeed'>
                     <li className="menu-user__item">News Feed</li>
                   </Link>
+
                   <li
                     className="menu-user__item"
                     onClick={() => handleSignOut()}
@@ -64,7 +70,9 @@ const Header = () => {
                 </ul>
               </div>
             ) : (
-              <Link to='/login'><i className="setting-icon fas fa-users-cog settings"></i></Link>
+              <Link to="/login">
+                <i className="setting-icon fas fa-users-cog settings"></i>
+              </Link>
             )}
           </div>
         </div>
