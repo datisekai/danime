@@ -56,7 +56,7 @@ console.log(user);
                 <img className="avatar-login" src={user.photoURL}></img>
                 <ul className="menu-user" ref={menuFeed}>
                   <li className="menu-user__item first-list">
-                    {user && (user.email || user.displayName || 'Invalid Email')}
+                    {user && (user.email || user.uid || 'Invalid Email')}
                   </li>
 
                   <Link to="/newsfeed">
