@@ -16,12 +16,14 @@ import { collection, addDoc } from "firebase/firestore";
 import "./comment.css";
 import { async } from "@firebase/util";
 import swal from "sweetalert";
+import Loading from "../loading/LoadingLogin";
 
 const Comments = () => {
   const id = useParams();
   const user = useLoginStore((state) => state.user);
   const [value, setValue] = useState("");
   const [comments, setComments] = useState([]);
+  const [load, setLoad] = useState(false) 
 
   useEffect(() => {
     getComments();
@@ -44,6 +46,7 @@ const Comments = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoad(true)
     const userComments = {
       uid: user.uid,
       img: user.photoURL,
@@ -51,11 +54,12 @@ const Comments = () => {
     };
     const data = { user: userComments, idAnime: id.id, comments: value };
     try {
-      value != ""
+      value.trim() != ""
         ? addDoc(collection(db, "comments"), data)
         : swal("Error", "You must to enter the content!", "error");
       getComments();
       setValue('')
+      setLoad(false)
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -93,7 +97,7 @@ const Comments = () => {
                 onChange={(e) => handleComment(e)}
                 placeholder="Comments somethings...."
               ></input>
-              <button onClick={() => handleSubmit()}>Send</button>
+              {load ? <Loading/> : <button onClick={() => handleSubmit()}>Send</button>}
             </div>
           </div>
         </form>
@@ -105,6 +109,7 @@ const Comments = () => {
 
       <div className="show-comments">
         <div className="comment-list">
+          
           {comments.map((item, index) => (
             <div className="comment-item" key={index}>
               <img src={item.user.img}></img>
