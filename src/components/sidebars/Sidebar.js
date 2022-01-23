@@ -1,11 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSideBar } from "../global/Bar";
+import { useLoginStore } from "../global/User";
+import swal from "sweetalert";
 import "./sidebar.css";
+import { authentication } from "../login/Firebase";
+import { signOut } from "firebase/auth";
 const Sidebar = () => {
   const navigate = useNavigate();
   const statusSideBar = useSideBar(state => state.sidebar)
   const setSideBar = useSideBar(state => state.setSidebar)
+  const user = useLoginStore(state => state.user)
+  const setUser = useLoginStore(state => state.setUser)
   const sidebar = useRef();
   const home = useRef();
   const search = useRef();
@@ -56,6 +62,27 @@ const Sidebar = () => {
     }
   }, [window.location.pathname]);
 
+  const handleSignOut = () => {
+    swal({
+      title: "Are you sure?",
+      text: "Are you sure that you want to leave this page?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        signOut(authentication)
+          .then(() => {
+            swal("SignOut successfull", "See you later", "success");
+            setUser(undefined);
+          })
+          .catch((error) => {
+            swal("Oops!", "Something went wrong!", "error");
+          });
+      }
+    });
+  };
+
   return (
     <div className="sidebars" ref={sidebar} style={{visibility:`${statusSideBar ? 'visible' : 'hidden'}`}}>
       <i
@@ -80,7 +107,7 @@ const Sidebar = () => {
         className="fas fa-sign-in-alt"
         title="Login"
         ref={login}
-        onClick={() => navigate("/login")}
+        onClick={() => user ? handleSignOut() : navigate("/login")}
       ></i>
       <a href="https://www.facebook.com/datisekai/">
         <i className="fab fa-facebook-square"></i>

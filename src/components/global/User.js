@@ -5,4 +5,6 @@ export const useLoginStore = create(set => ({
     setUser: (userLogin) => set({
         user:userLogin
     }),
+    loading:false,
+    setLoading: (load) => set({loading:load})
 }))

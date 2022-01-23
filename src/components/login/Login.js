@@ -4,7 +4,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Title from "../../handle/Title";
 import { useLoginStore } from "../global/User";
@@ -14,14 +14,24 @@ import {
   providerGithub,
   providerGoogle,
 } from "./Firebase";
+import Loading from "../loading/Loading";
 import swal from "sweetalert";
 
 import "./login.css";
+import LoadingLogin from "../loading/LoadingLogin";
 const Login = () => {
   const navigate = useNavigate();
   const setUser = useLoginStore((state) => state.setUser);
+  const user = useLoginStore(state => state.user)
+  const load = useLoginStore(state => state.loading)
+  const setLoad = useLoginStore(state => state.setLoading)
+
+  useEffect(() => {
+    user && navigate('/')
+  },[])
 
   const handleSignInGoogle = () => {
+    setLoad(true)
     signInWithPopup(authentication, providerGoogle)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -30,12 +40,13 @@ const Login = () => {
         // The signed-in user info.
         const user = result.user;
         setUser(user);
-
+        setLoad(false)
         swal("Login successfull", `Hello ${user.displayName}`, "success");
         navigate("/");
         // ...
       })
       .catch((error) => {
+        setLoad(false)
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -48,12 +59,14 @@ const Login = () => {
   };
 
   const handleSignInFacebook = () => {
+    setLoad(true)
     signInWithPopup(authentication, providerFacebook)
       .then((result) => {
+        setLoad(false)
         // The signed-in user info.
         const user = result.user;
         setUser(user);
-
+        setLoad(false)
         swal("Login successfull", `Hello ${user.displayName}`, "success");
         navigate("/");
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
@@ -90,6 +103,7 @@ const Login = () => {
           <i className="login-btn-close far fa-window-close"></i>
         </Link>
       </div>
+      {load && <LoadingLogin/>}
     </div>
   );
 };

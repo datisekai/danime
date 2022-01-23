@@ -26,7 +26,6 @@ const Detail = () => {
     scrollTop();
   }, [id]);
 
-
   useEffect(() => {
     detail.id &&
       setLocal({
@@ -41,14 +40,20 @@ const Detail = () => {
     fetch(api)
       .then((respon) => respon.json())
       .then((data) => {
-        setDetail(data.data)
-        setLoading(false)
+        setDetail(data.data);
+        setLoading(false);
       });
   };
 
   return (
     <div className="grid wide">
-      <Title Title={detail.titles && (detail.titles.en || detail.titles.it || detail.titles.jp) || 'Detail Anime'}/>
+      <Title
+        Title={
+          (detail.titles &&
+            (detail.titles.en || detail.titles.it || detail.titles.jp)) ||
+          "Detail Anime"
+        }
+      />
       <div className="view">
         <div className="detail">
           {episode ? <Episode /> : <Traller anime={detail} load={loading} />}
@@ -56,7 +61,6 @@ const Detail = () => {
         </div>
 
         <Infodetail anime={detail} />
-    
       </div>
     </div>
   );

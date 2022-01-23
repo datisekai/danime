@@ -49,7 +49,7 @@ const Header = () => {
           </Link>
 
           <div className="tool-header">
-            <i className="search-icon fas fa-bars" onClick={() => setSideBar(sidebar)}></i>
+            <i className={`search-icon ${sidebar ? 'fas fa-times' : 'fas fa-chevron-down'}`} onClick={() => setSideBar(sidebar)}></i>
 
             {user ? (
               <div className="avatar">
