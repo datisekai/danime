@@ -98,7 +98,7 @@ const Comments = () => {
         </form>
       ) : (
         <div className="error-comment">
-          You need to <Link to="/login">login</Link> to comment{" "}
+          You need to <Link to={`/login/${id.id}`}>login</Link> to comment{" "}
         </div>
       )}
 

@@ -73,7 +73,8 @@ const App = () => {
           <Route path="/search/" element={<PageSearch/>}></Route>
           <Route path="/anime/:id/" element={<Detail/>}></Route>
           <Route path="/anime/:id/:episode" element={<Detail/>}></Route>
-          <Route path="/login" element={!user ? <Login/> : <Error/>}></Route>
+          <Route path="/login/:id" element={!user ? <Login/> : <Error/>}></Route>
+          <Route path="/login/" element={!user ? <Login/> : <Error/>}></Route>
           <Route path="/newsfeed" element={<><NewsFeed/> <Top/></>}></Route>
           <Route path="*" element={<Error/>}></Route>
         </Routes>

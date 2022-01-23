@@ -5,7 +5,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Title from "../../handle/Title";
 import { useLoginStore } from "../global/User";
 import {
@@ -25,6 +25,7 @@ const Login = () => {
   const user = useLoginStore(state => state.user)
   const load = useLoginStore(state => state.loading)
   const setLoad = useLoginStore(state => state.setLoading)
+  const {id} = useParams()
 
   useEffect(() => {
     user && navigate('/')
@@ -42,7 +43,7 @@ const Login = () => {
         setUser(user);
         setLoad(false)
         swal("Login successfull", `Hello ${user.displayName}`, "success");
-        navigate("/");
+        id ?  navigate(`/anime/${id}`) : navigate('/')
         // ...
       })
       .catch((error) => {
@@ -68,7 +69,7 @@ const Login = () => {
         setUser(user);
         setLoad(false)
         swal("Login successfull", `Hello ${user.displayName}`, "success");
-        navigate("/");
+        id ? navigate(`/anime/${id}`) : navigate('/')
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
