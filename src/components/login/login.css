@@ -29,6 +29,12 @@
     font-weight: 600;
 }
 
+@media (max-width:739px) {
+    .login-form button{
+      font-size: 20px;
+    }
+  }
+
 #loginFacebook{
     background-color: #0E8DF1;
 }
