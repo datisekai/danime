@@ -14,7 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
   const sidebar = useSideBar(state => state.sidebar)
   const setSideBar = useSideBar(state => state.setSidebar)
-
+console.log(user);
   const menuFeed = useRef();
   const handleSignOut = () => {
     swal({
@@ -56,7 +56,7 @@ const Header = () => {
                 <img className="avatar-login" src={user.photoURL}></img>
                 <ul className="menu-user" ref={menuFeed}>
                   <li className="menu-user__item first-list">
-                    {user && user.email}
+                    {user && (user.email || user.displayName || 'Invalid Email')}
                   </li>
 
                   <Link to="/newsfeed">
