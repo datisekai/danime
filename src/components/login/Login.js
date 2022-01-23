@@ -46,7 +46,7 @@ const Login = () => {
         // ...
       })
       .catch((error) => {
-        setLoad(false)
+        setLoad(true)
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -76,6 +76,7 @@ const Login = () => {
         // ...
       })
       .catch((error) => {
+        setLoad(true)
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;

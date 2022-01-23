@@ -21,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 export const authentication = getAuth(app);
 export const providerGoogle = new GoogleAuthProvider();
 export const providerFacebook = new FacebookAuthProvider();
-export const db = getFirestore();
+export const db = getFirestore(app);
 
 // try {
 //   const docRef = addDoc(collection(db, "users"), {

@@ -11,12 +11,13 @@ import Infodetail from "./Infodetail";
 import Episode from "./Episode";
 import Title from "../../handle/Title";
 import Comments from "./Comments";
+import { useLoginStore } from "../global/User";
 
 const Detail = () => {
   const [detail, setDetail] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-
+  const user = useLoginStore((state) => state.user);
   const { episode } = useParams();
 
   const api = `${SEARCH_ID}${id}`;
@@ -61,6 +62,7 @@ const Detail = () => {
         </div>
 
         <Infodetail anime={detail} />
+        <Comments />
       </div>
     </div>
   );
