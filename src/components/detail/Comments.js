@@ -55,6 +55,7 @@ const Comments = () => {
         ? addDoc(collection(db, "comments"), data)
         : swal("Error", "You must to enter the content!", "error");
       getComments();
+      setValue('')
     } catch (e) {
       console.error("Error adding document: ", e);
     }
