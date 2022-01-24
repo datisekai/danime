@@ -46,6 +46,17 @@
   }
 }
 
+@media (max-width:400px) {
+  .anime-item{
+    width: 130px;
+  }
+
+  
+  .anime-item__img{
+    height: 200px;
+  }
+}
+
 .anime-item__title {
   overflow: hidden;
   text-overflow: ellipsis;
