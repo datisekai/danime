@@ -22,6 +22,8 @@ const Recomment = () => {
       });
   };
 
+  console.log(items);
+
   return (
     <div className="recommend">
       <h1 className="recommend-title">Recommend</h1>
@@ -36,7 +38,7 @@ const Recomment = () => {
                   <img src={item.cover_image || ""}></img>
                   <h3 style={{ color: `${item.cover_color || "white"}` }}>
                     {item.titles &&
-                      (item.titles.en || item.titles.it || items.titles.jp)}
+                      (item.titles.en || item.titles.rj || items.titles.jp || 'No title')}
                   </h3>
                 </div>
               </Link>
