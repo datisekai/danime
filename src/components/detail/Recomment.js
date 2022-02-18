@@ -22,8 +22,6 @@ const Recomment = () => {
       });
   };
 
-  console.log(items);
-
   return (
     <div className="recommend">
       <h1 className="recommend-title">Recommend</h1>
